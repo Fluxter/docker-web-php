@@ -6,15 +6,13 @@ ENV         DEBIAN_FRONTEND 		noninteractive
 ENV			LC_ALL 					C.UTF-8
 ARG         DOCKER_TAG
 
-# APT Repositories
+# APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
+RUN apt install -y unzip mysql-client curl npm git software-properties-common wget sudo software-properties-common
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN add-apt-repository ppa:ondrej/php
 RUN apt update
-
-# Dependencies
-RUN apt install -y unzip mysql-client curl npm git software-properties-common wget sudo software-properties-common
 
 # Yarn
 RUN apt install -y yarn && yarn --version
