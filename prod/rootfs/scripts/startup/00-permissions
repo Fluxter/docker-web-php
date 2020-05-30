@@ -9,10 +9,15 @@ if [ ${USER_ID:-999} -ne 999 ] && [ ${GROUP_ID:-999} -ne 999 ]; then
             -u $USER_ID \
             www-data
     groupmod -g $GROUP_ID www-data
-
-    chown -R www-data:www-data \
-        /home/www-data \
-        /var/cache/app \
-        /var/lib/php/sessions/ \
-        $APP_DIR
+    chown -R www-data:www-data /home/www-data
 fi
+
+if [  [ ${GROUP_ID:-999} -ne 999 ]; then 
+    useradd -m -G root www-data
+fi
+
+chown -R www-data:www-data \
+    /home/www-data \
+    /var/cache/app \
+    /var/lib/php/sessions/ \
+    $APP_DIR
