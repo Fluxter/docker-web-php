@@ -1,6 +1,5 @@
 FROM 		ubuntu:18.04
 
-
 MAINTAINER  Marcel Kallen, Fluxter <info@fluxter.net>
 ENV         DEBIAN_FRONTEND 		noninteractive
 ENV			LC_ALL 					C.UTF-8

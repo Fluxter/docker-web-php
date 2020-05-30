@@ -1,4 +1,5 @@
-FROM fluxter/symfony-web:${DOCKER_TAG}
+ARG DOCKER_TAG
+FROM fluxter/web-php:${DOCKER_TAG}
 
 RUN apt install -y php${DOCKER_TAG}-xdebug nano iputils-ping
 
