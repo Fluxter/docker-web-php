@@ -1,6 +1,6 @@
-FROM fluxter/symfony-web:7.4
+FROM fluxter/symfony-web:${DOCKER_TAG}
 
-RUN apt install -y php7.4-xdebug nano iputils-ping
+RUN apt install -y php${DOCKER_TAG}-xdebug nano iputils-ping
 
 RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs-fixer && chmod +x /usr/bin/php-cs-fixer
 
