@@ -3,9 +3,13 @@ This container support Symfony with your desired PHP version
 
 ## Environments
 ### Prod
-docker pull fluxter/web-php:latest
+`docker pull fluxter/web-php:7.4`  
+`docker pull fluxter/web-php:7.3`  
+`docker pull fluxter/web-php:7.2`
 ### Dev
-docker pull fluxter/web-php-dev:latest
+`docker pull fluxter/web-php-dev:7.4`  
+`docker pull fluxter/web-php-dev:7.3`  
+`docker pull fluxter/web-php-dev:7.2`
 
 ## Environment Variables
 You can configure the container with the following environment variables
