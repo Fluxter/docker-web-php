@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "Setting permissions...":
+if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then 
+    echo "Setting permissions... for User $USER_ID and Group $GROUP_ID"
+    mkdir -p $HOME
+    mkdir -p /var/cache/app
+	usermod -d $HOME \
+            --shell /bin/bash \
+            -u $USER_ID \
+            www-data
+    groupmod -g $GROUP_ID www-data
+
+    chown -R www-data:www-data \
+        /home/www-data \
+        /var/cache/app \
+        /var/lib/php/sessions/ \
+        $APP_DIR
+fi

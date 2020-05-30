@@ -1,0 +1,2 @@
+mkdir ~/.ssh
+echo "StrictHostKeyChecking no" >> ~/.ssh/config

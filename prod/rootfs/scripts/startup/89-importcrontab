@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Loading crontab..."
+if [ -f "$FILE_CRONTAB" ]; then
+    crontab -u $USER_NAME $FILE_CRONTAB
+    /etc/init.d/cron start
+    echo "Imported crontab file $FILE_CRONTAB for user $USER_NAME"
+else
+    echo "No crontab File found. Searched for $FILE_CRONTAB"
+fi

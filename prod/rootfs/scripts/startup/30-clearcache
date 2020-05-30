@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "clear cache..."
+sudo -u $USER_NAME $DIR_APP/bin/console cache:clear --no-warmup
+sudo -u $USER_NAME $DIR_APP/bin/console cache:warmup

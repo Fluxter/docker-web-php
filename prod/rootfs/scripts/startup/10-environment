@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "Checking environment file $FILE_PARAMETERS"
+if [ -f $FILE_PARAMETERS ]; then
+    sudo -u $USER_NAME rm $FILE_PARAMETERS
+fi
+
+echo "Copying $FILE_PARAMETERS_DIST to $FILE_PARAMETERS"
+sudo -u $USER_NAME cp $FILE_PARAMETERS_DIST $FILE_PARAMETERS
+args=() i=0
+for var in $(compgen -e); do
+    VALUE=`echo ${!var} | sed -r 's/\./\\\\./g'`
+    sudo -u $USER_NAME sed -i "s.\$${var}.${VALUE}.g" $FILE_PARAMETERS  > /dev/null
+done
