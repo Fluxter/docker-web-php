@@ -7,7 +7,7 @@ RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs
 
 # Add Swagger codegen
 RUN apt install -y default-jre \
-	&& wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.2.1/swagger-codegen-cli-2.2.1.jar -O /opt/swagger-codegen-cli.jar \
+    && wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.14/swagger-codegen-cli-2.4.14.jar -O /opt/swagger-codegen-cli.jar
 	&& echo -e '#!/bin/bash\njava -jar /opt/swagger-codegen-cli.jar $@' > /usr/bin/swagger-codegen \
 	&& chmod +x /usr/bin/swagger-codegen
 
