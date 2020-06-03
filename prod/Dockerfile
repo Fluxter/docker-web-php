@@ -7,11 +7,15 @@ ARG         DOCKER_TAG
 
 # APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
-RUN apt install -y unzip mysql-client curl npm git software-properties-common wget sudo software-properties-common
+RUN apt install -y unzip mysql-client curl git software-properties-common wget sudo software-properties-common
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN add-apt-repository ppa:ondrej/php
 RUN apt update
+
+# NODE
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y nodejs
 
 # Yarn
 RUN apt install -y yarn && yarn --version
