@@ -1,2 +1,3 @@
 #!/bin/bash
 sed -i "/ root/c\root $DIR_APP/public;" /etc/nginx/sites-available/app.conf
+sed -i "/ root/c\root $DIR_APP/public;" /etc/nginx/sites-available/app_ssl.conf

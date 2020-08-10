@@ -35,6 +35,7 @@ RUN     rm -f /etc/nginx/sites-enabled/*
 EXPOSE  80:80
 RUN		mkdir -p /app/
 RUN 	ln -s "/etc/nginx/sites-available/app.conf" "/etc/nginx/sites-enabled/app.conf"
+RUN 	ln -s "/etc/nginx/sites-available/app_ssl.conf" "/etc/nginx/sites-enabled/app_ssl.conf"
 
 # DYNAMIC USERNAME
 RUN 	echo "if [ \${USER_ID:-0} -ne 0 ] && [ \${GROUP_ID:-0} -ne 0 ]; then" >> ~/.bashrc && \
@@ -48,6 +49,7 @@ ADD		rootfs /
 
 # Prepare scripts
 RUN   sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app.conf
+RUN   sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app_ssl.conf
 RUN   sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /scripts/startup/80-startphp
 RUN cat /scripts/startup/80-startphp
 
