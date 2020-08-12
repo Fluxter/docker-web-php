@@ -4,7 +4,7 @@ MAINTAINER  Marcel Kallen, Fluxter <info@fluxter.net>
 ENV         DEBIAN_FRONTEND 		noninteractive
 ENV			LC_ALL 					C.UTF-8
 ARG         DOCKER_TAG
-ENV         SSL_SELFSIGNED_SUBJ = "/C=US/ST=some-state/L=some-city/O=some-organisation/CN=symfony-app"
+ENV         SSL_SELFSIGNED_SUBJ "/C=US/ST=some-state/L=some-city/O=some-organisation/CN=symfony-app"
 
 # APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
