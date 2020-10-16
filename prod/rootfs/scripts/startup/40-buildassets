@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Building assets..."
-
-sudo -u $USER_NAME yarn --cwd $DIR_APP install --non-interactive
-sudo -u $USER_NAME yarn --cwd $DIR_APP encore production --non-interactive

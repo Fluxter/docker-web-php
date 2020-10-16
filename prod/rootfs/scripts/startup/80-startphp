@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "Starte PHP Daemon..."
-service phpPHP_VERSION_HERE-fpm start

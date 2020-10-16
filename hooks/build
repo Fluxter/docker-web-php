@@ -1,5 +1,0 @@
-#!/bin/bash -xe
-. ./hooks/env
-docker build \
-	--build-arg "DOCKER_TAG=$DOCKER_TAG" \
-	-t $IMAGE_NAME $DOCKERFILE_PATH

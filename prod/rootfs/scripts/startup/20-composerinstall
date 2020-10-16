@@ -1,9 +1,0 @@
-#!/bin/bash
-
-## Composer
-echo "Running composer install..."
-if [ "$SF_APP_ENV" == "dev" ]; then
-    sudo -u $USER_NAME composer install -d $DIR_APP
-elif [ "$SF_APP_ENV" == "prod" ]; then
-    sudo -u $USER_NAME composer install --no-dev -o -d $DIR_APP
-fi

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-FILE_SSL_KEY=/etc/ssl/private/nginx-app.key
-FILE_SSL_CRT=/etc/ssl/certs/nginx-app.crt
-if [ ! -f "$FILE_SSL_KEY" ]; then
-    echo "Generating new self-signed keys!"
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout $FILE_SSL_KEY -out $FILE_SSL_CRT -subj "$SSL_SELFSIGNED_SUBJ"
-fi
-
