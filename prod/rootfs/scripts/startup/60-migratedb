@@ -2,4 +2,4 @@
 
 ## Database Migrate
 echo "Migrating the database..."
-$APP_ROOT/bin/console doctrine:migrations:migrate --no-interaction
+sudo -u www-data $APP_ROOT/bin/console doctrine:migrations:migrate --no-interaction

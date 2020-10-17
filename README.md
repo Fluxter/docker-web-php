@@ -18,7 +18,7 @@ You can configure the container with the following environment variables
 | -------------- | -------------------------------------------------- | --------------------- |
 | APP_ROOT       | The base app path, note this is mostly for symfony | /var/www/html         |
 | WEBSPACE_ROOT  | The base url ($APP_ROOT/public is the entry point) | /var/www/html/public  |
-| FILE_CRONTAB   | A crontab file that should be importet             | /app/crontab          |
+| FILE_CRONTAB   | A crontab file that should be importet             | /crontab              |
 | DOCKER_HOST_IP | The host ip of the docker container                | Set in Startup        |
 
 ## How to handle own environment variables in Symfony?

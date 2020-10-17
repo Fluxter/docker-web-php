@@ -7,7 +7,7 @@ ARG         DOCKER_TAG
 
 ENV         APP_ROOT "/var/www/html"
 ENV         WEBSPACE_ROOT "/var/www/html/public"
-ENV         FILE_CRONTAB /app/crontab
+ENV         FILE_CRONTAB /crontab
 
 # APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
