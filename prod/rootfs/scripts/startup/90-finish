@@ -1,5 +1,3 @@
 #!/bin/bash 
 
-chown -R www-data:www-data $APP_ROOT;
-
 rm /tmp/CONTAINER_STARTING
