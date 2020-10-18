@@ -1,4 +1,4 @@
 #!/bin/bash
 
 touch /tmp/CONTAINER_STARTING
-chown -R www-data:www-data $APP_ROOT;
+chown -R www-data:www-data $APP_ROOT /var/lib/php/sessions;
