@@ -28,7 +28,7 @@ RUN apt install -y yarn && yarn --version
 RUN if [ "$DOCKER_TAG" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl; fi
 RUN if [ "$DOCKER_TAG" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php composer-setup.php --install-dir=/bin --filename=composer \
+    && php composer-setup.php --install-dir=/bin --filename=composer --version=1.10.16 \
     && php -r "unlink('composer-setup.php');"
 
 # NGINX

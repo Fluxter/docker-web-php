@@ -10,7 +10,7 @@ function buildTag
         echo Build resulted in an error
     fi
 
-    if [ "$1" == "push" ]; then
+    if [ $2 == "push" ]; then
         docker push fluxter/web-php:$1
         if [ $? != 0 ]; then
             echo Push resulted in an error
@@ -25,5 +25,5 @@ function buildTag
     fi
 }
 
-buildTag 7.3
-buildTag 7.4
+buildTag 7.3 $1
+buildTag 7.4 $1
