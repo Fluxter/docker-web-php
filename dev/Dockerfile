@@ -9,4 +9,6 @@ RUN apt update && \
 
 RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs-fixer && chmod +x /usr/bin/php-cs-fixer
 
-ADD	rootfs /
+ADD	config/php/21-xdebug.ini /etc/php/${DOCKER_TAG}/fpm/conf.d/21-xdebug.ini
+ADD	config/php/21-xdebug.ini /etc/php/${DOCKER_TAG}/cli/conf.d/21-xdebug.ini
+ADD	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf

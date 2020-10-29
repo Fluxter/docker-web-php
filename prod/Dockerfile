@@ -54,6 +54,10 @@ RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5
 
 # FILES
 ADD	    rootfs /
+ADD  	config/php/php-fpm.conf /etc/php/${DOCKER_TAG}/fpm/php-fpm.conf
+ADD  	config/php/php.ini /etc/php/${DOCKER_TAG}/fpm/php.ini
+ADD  	config/php/php.ini /etc/php/${DOCKER_TAG}/cli/php.ini
+ADD  	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf
 RUN 	ln -s "/etc/nginx/sites-available/app.conf" "/etc/nginx/sites-enabled/app.conf"
 RUN 	ln -s "/etc/nginx/sites-available/app_ssl.conf" "/etc/nginx/sites-enabled/app_ssl.conf"
 RUN     chown -R www-data:www-data /home/www-data
