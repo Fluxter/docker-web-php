@@ -1,5 +1,6 @@
 ARG DOCKER_TAG
 FROM fluxter/web-php:${DOCKER_TAG}
+ARG DOCKER_TAG
 
 RUN apt update
 
@@ -17,6 +18,6 @@ RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs
 
 # XDEBUG
 RUN apt install -y php${DOCKER_TAG}-xdebug 
-ADD	config/php/21-xdebug.ini /etc/php/${DOCKER_TAG}/fpm/conf.d/21-xdebug.ini
-ADD	config/php/21-xdebug.ini /etc/php/${DOCKER_TAG}/cli/conf.d/21-xdebug.ini
+ADD	config/php/21-xdebug.ini /etc/php/$DOCKER_TAG/fpm/conf.d/21-xdebug.ini
+ADD	config/php/21-xdebug.ini /etc/php/$DOCKER_TAG/cli/conf.d/21-xdebug.ini
 ADD	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf
