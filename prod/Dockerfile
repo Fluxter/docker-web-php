@@ -41,6 +41,7 @@ EXPOSE  80:80
 # NODE
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g create-ts-index
 
 # Swagger codegen
 RUN wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.15/swagger-codegen-cli-2.4.15.jar -O /opt/swagger-codegen-cli.jar \
