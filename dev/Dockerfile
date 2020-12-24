@@ -16,6 +16,9 @@ RUN apt install -y ant
 # PHP CS Fixer
 RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs-fixer && chmod +x /usr/bin/php-cs-fixer
 
+# Tools
+RUN composer global update fluxter/fxrelease fluxter/php-code-helper
+
 # XDEBUG
 RUN apt install -y php${DOCKER_TAG}-xdebug 
 ADD	config/php/21-xdebug.ini /etc/php/$DOCKER_TAG/fpm/conf.d/21-xdebug.ini

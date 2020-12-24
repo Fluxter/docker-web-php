@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 function buildTag
 {
     docker build ./prod --build-arg DOCKER_TAG=$1 -t fluxter/web-php:$1
