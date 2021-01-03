@@ -16,8 +16,13 @@ RUN apt install -y ant
 # PHP CS Fixer
 RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs-fixer && chmod +x /usr/bin/php-cs-fixer
 
+
+
 # Tools
-RUN composer global update fluxter/fxrelease fluxter/php-code-helper
+RUN sudo -u www-data composer global require fluxter/php-code-helper
+RUN if [ "$DOCKER_TAG" = "7.4" ]; then sudo -u www-data composer global require fluxter/fxrelease; fi
+RUN if [ "$DOCKER_TAG" = "7.3" ]; then sudo -u www-data composer global require fluxter/fxrelease; fi
+RUN echo 'PATH="$PATH:/home/www-data/.composer/vendor/bin"' >> /home/www-data/.bashrc
 
 # XDEBUG
 RUN apt install -y php${DOCKER_TAG}-xdebug 
