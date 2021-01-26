@@ -1,0 +1,9 @@
+build:
+  type: build
+  script:
+    - ./build.sh
+
+deploy:
+  type: deploy
+  script:
+    - ./build.sh push
