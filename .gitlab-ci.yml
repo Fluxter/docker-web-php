@@ -11,3 +11,5 @@ deploy:
     - docker-host
   script:
     - ./build.sh push
+  only:
+    - master
