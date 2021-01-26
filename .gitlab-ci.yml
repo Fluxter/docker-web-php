@@ -1,9 +1,13 @@
 build:
   type: build
+  tags:
+    - docker-host
   script:
     - ./build.sh
 
 deploy:
   type: deploy
+  tags:
+    - docker-host
   script:
     - ./build.sh push
