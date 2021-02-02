@@ -1,7 +1,10 @@
 #!/bin/bash
 
+
+
 echo "Loading crontab..."
 if [ -f "$FILE_CRONTAB" ]; then
+    sed -i "s.\$APP_ROOT.$APP_ROOT.g" $FILE_CRONTAB
     crontab -u www-data $FILE_CRONTAB
     /etc/init.d/cron start
     echo "Imported crontab file $FILE_CRONTAB for user www-data"
