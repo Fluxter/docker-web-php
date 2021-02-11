@@ -66,7 +66,7 @@ RUN     chown -R www-data:www-data /home/www-data
 # Prepare scripts
 RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app_ssl.conf
-RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/supervisord.conf
+RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/supervisor/conf.d/php-fpm.conf
 
 # ENVIRONMENT
 RUN mkdir -p /var/www

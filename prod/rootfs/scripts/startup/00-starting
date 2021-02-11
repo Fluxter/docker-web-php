@@ -1,4 +1,7 @@
 #!/bin/bash
 
 touch /tmp/CONTAINER_STARTING
+if [ -f "/tmp/CONTAINER_STARTED" ]; then
+    rm /tmp/CONTAINER_STARTED
+fi 
 chown -R www-data:www-data $APP_ROOT /var/lib/php/sessions;
