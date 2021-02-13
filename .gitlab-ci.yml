@@ -1,25 +1,62 @@
-build:
+build-7.3:
   type: build
   tags:
     - docker-host
   script:
     - docker build ./prod --build-arg DOCKER_TAG=7.3 -t fluxter/web-php:7.3
     - docker build ./dev --build-arg DOCKER_TAG=7.3 -t fluxter/web-php:7.3-dev
+
+build-7.4:
+  type: build
+  tags:
+    - docker-host
+  script:
     - docker build ./prod --build-arg DOCKER_TAG=7.4 -t fluxter/web-php:7.4
     - docker build ./dev --build-arg DOCKER_TAG=7.4 -t fluxter/web-php:7.4-dev
+
+build-8.0:
+  type: build
+  tags:
+    - docker-host
+  script:
     - docker build ./prod --build-arg DOCKER_TAG=8.0 -t fluxter/web-php:8.0
     - docker build ./dev --build-arg DOCKER_TAG=8.0 -t fluxter/web-php:8.0-dev
 
-deploy:
+deploy-7.3:
   type: deploy
   tags:
     - docker-host
   script:
     - docker push fluxter/web-php:7.3
     - docker push fluxter/web-php:7.3-dev
-    - docker push fluxter/web-php:7.4
-    - docker push fluxter/web-php:7.4-dev
-    - docker push fluxter/web-php:8.0
-    - docker push fluxter/web-php:8.0-dev
+  needs:
+    - job: build-7.3
   only:
     - master
+
+
+deploy-7.4:
+  type: deploy
+  tags:
+    - docker-host
+  script:
+    - docker push fluxter/web-php:7.4
+    - docker push fluxter/web-php:7.4-dev
+  needs:
+    - job: build-7.4
+  only:
+    - master
+
+deploy-8.0:
+  type: deploy
+  tags:
+    - docker-host
+  script:
+    - docker push fluxter/web-php:8.0
+    - docker push fluxter/web-php:8.0-dev
+  needs:
+    - job: build-7.4
+  only:
+    - master
+
+
