@@ -25,7 +25,7 @@ RUN apt install -y yarn && yarn --version
 
 # PHP
 RUN if [ "$DOCKER_TAG" = "8.0" ]; then apt install -y php8.0-cli php8.0-common php8.0-opcache php8.0-mysql php8.0-mbstring php8.0-zip php8.0-fpm php8.0-tidy php8.0-curl php8.0-xml php8.0-intl; fi
-RUN if [ "$DOCKER_TAG" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl; fi
+RUN if [ "$DOCKER_TAG" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl php7.4-bcmath php7.4-gd; fi
 RUN if [ "$DOCKER_TAG" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/bin --filename=composer --version=1.10.16 \
