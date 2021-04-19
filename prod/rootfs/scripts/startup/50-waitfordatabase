@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [ "$FXPHP_BUILD" == "1"]; then exit; fi
+
 echo "Waiting for MySQL Server..."
 while ! mysqladmin ping -h"$MYSQL_HOST" --silent; do
 	echo "Waiting for MySQL Server..."

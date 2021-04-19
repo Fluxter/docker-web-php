@@ -3,6 +3,7 @@ set -e
 
 function buildTag
 {
+    echo "Builiding tag $1"
     docker build ./prod --build-arg DOCKER_TAG=$1 -t fluxter/web-php:$1
     if [ $? != 0 ]; then
         echo Build resulted in an error
@@ -28,6 +29,6 @@ function buildTag
     fi
 }
 
-buildTag 7.3 $1
+#buildTag 7.3 $1
 buildTag 7.4 $1
-buildTag 8.0 $1
+#buildTag 8.0 $1

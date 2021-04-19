@@ -19,6 +19,8 @@ You can configure the container with the following environment variables
 | APP_ROOT       | The base app path, note this is mostly for symfony | /var/www/html         |
 | WEBSPACE_ROOT  | The base url ($APP_ROOT/public is the entry point) | /var/www/html/public  |
 | FILE_CRONTAB   | A crontab file that should be importet             | /crontab              |
+| SF_APP_ENV     | The symfony app env                                | /                     |
+| FXPHP_BUILD    | A file to indicate if the system builds. It wont wait for database then | / |
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.
@@ -28,12 +30,12 @@ Symfony now uses the Environment component.
 ### Example:
 .env.local.dist
 ```
-APP_ENV=$APP_ENV
+APP_ENV=$SF_APP_ENV
 TESTVAR=$TESTVAR
 ```
 Docker .env file (or environment Variables)
 ``` 
-APP_ENV=test
+SF_APP_ENV=test
 ```
 The resulting .env file
 ```

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 echo "Loading crontab..."
 if [ -f "$FILE_CRONTAB" ]; then
     sed -i "s.\$APP_ROOT.$APP_ROOT.g" $FILE_CRONTAB

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Yarn
+echo "[STARTUP] Yarn build..."
+sudo -u www-data yarn --cwd $APP_ROOT install --non-interactive
+if [ "$SF_APP_ENV" == "dev" ]; then
+    sudo -u www-data yarn --cwd $APP_ROOT encore dev --non-interactive
+else
+    sudo -u www-data yarn --cwd $APP_ROOT encore production --non-interactive
+fi

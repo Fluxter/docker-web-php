@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Composer
+echo "[STARTUP] Composer build..."
+if [ "$SF_APP_ENV" == "dev" ]; then
+    sudo -u www-data composer install -d $APP_ROOT
+else
+    sudo -u www-data composer install --no-dev -o -d $APP_ROOT
+fi
