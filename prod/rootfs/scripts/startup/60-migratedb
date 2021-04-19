@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$FXPHP_BUILD" = "1" ]; then exit; fi
+if [ "$FXPHP_BUILD" = "1" ]; then return; fi
 
 ## Database Migrate
 echo "Migrating the database..."
