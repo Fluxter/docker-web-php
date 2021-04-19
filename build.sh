@@ -29,6 +29,6 @@ function buildTag
     fi
 }
 
-#buildTag 7.3 $1
+buildTag 7.3 $1
 buildTag 7.4 $1
-#buildTag 8.0 $1
+buildTag 8.0 $1
