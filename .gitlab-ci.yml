@@ -1,8 +1,8 @@
-build: &defaultbuild
+defaultbuild: &defaultbuild
   stage: build
   tags:
     - docker-host
-build: &defaultdeploy
+defaultdeploy: &defaultdeploy
   stage: deploy
   tags:
     - docker-host
