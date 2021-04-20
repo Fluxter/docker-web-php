@@ -8,6 +8,3 @@ if [ -f "/tmp/CONTAINER_STARTED" ]; then
     echo "[STARTUP] - Removing previously started indicator at /tmp/CONTAINER_STARTED"
     rm /tmp/CONTAINER_STARTED
 fi 
-
-echo "[STARTUP] - Ensuring that $APP_ROOT is owned by www-data..."
-chown -R www-data:www-data $APP_ROOT /var/lib/php/sessions
