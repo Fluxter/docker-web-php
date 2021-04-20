@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Yarn
-echo "[STARTUP] Yarn build..."
+echo "[STARTUP] Installing yarn dependencies..."
 sudo -u www-data yarn --cwd $APP_ROOT install --non-interactive
+
 if [ "$SF_APP_ENV" == "dev" ]; then
+    echo "[STARTUP] - Running yarn build in dev mode..."
     sudo -u www-data yarn --cwd $APP_ROOT encore dev --non-interactive
 else
+    echo "[STARTUP] - Running yarn build in prod mode..."
     sudo -u www-data yarn --cwd $APP_ROOT encore production --non-interactive
 fi

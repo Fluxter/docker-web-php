@@ -1,62 +1,46 @@
-build-7.3:
+build: &defaultbuild
   stage: build
   tags:
     - docker-host
+build: &defaultdeploy
+  stage: deploy
+  tags:
+    - docker-host
+
+build-7.3:
+  <<: *defaultbuild
   script:
-    - docker build --no-cache ./prod --build-arg DOCKER_TAG=7.3 -t fluxter/web-php:7.3
-    - docker build --no-cache ./dev --build-arg DOCKER_TAG=7.3 -t fluxter/web-php:7.3-dev
+    - ./build.sh 7.3 build
 
 build-7.4:
-  stage: build
-  tags:
-    - docker-host
+  <<: *defaultbuild
   script:
-    - docker build --no-cache ./prod --build-arg DOCKER_TAG=7.4 -t fluxter/web-php:7.4
-    - docker build --no-cache ./dev --build-arg DOCKER_TAG=7.4 -t fluxter/web-php:7.4-dev
+    - ./build.sh 7.4 build
 
 build-8.0:
-  stage: build
-  tags:
-    - docker-host
+  <<: *defaultbuild
   script:
-    - docker build --no-cache ./prod --build-arg DOCKER_TAG=8.0 -t fluxter/web-php:8.0
-    - docker build --no-cache ./dev --build-arg DOCKER_TAG=8.0 -t fluxter/web-php:8.0-dev
+    - ./build.sh 8.0 build
 
 deploy-7.3:
-  stage: deploy
-  tags:
-    - docker-host
+  <<: *defaultdeploy
   script:
-    - docker push fluxter/web-php:7.3
-    - docker push fluxter/web-php:7.3-dev
+    - ./build.sh 7.3 push
   needs:
     - job: build-7.3
-  only:
-    - master
-
 
 deploy-7.4:
-  stage: deploy
-  tags:
-    - docker-host
+  <<: *defaultdeploy
   script:
-    - docker push fluxter/web-php:7.4
-    - docker push fluxter/web-php:7.4-dev
+    - ./build.sh 7.4 push
   needs:
     - job: build-7.4
-  only:
-    - master
 
 deploy-8.0:
-  stage: deploy
-  tags:
-    - docker-host
+  <<: *defaultdeploy
   script:
-    - docker push fluxter/web-php:8.0
-    - docker push fluxter/web-php:8.0-dev
+    - ./build.sh 8.0 push
   needs:
     - job: build-8.0
-  only:
-    - master
 
 

@@ -1,4 +1,8 @@
 #!/bin/bash 
+echo "[STARTUP] Finishing startup"
 
+echo "[STARTUP] - Removing /tmp/CONTAINER_STARTING"
 rm /tmp/CONTAINER_STARTING
+
+echo "[STARTUP] - Creating /tmp/CONTAINER_STARTED"
 touch /tmp/CONTAINER_STARTED

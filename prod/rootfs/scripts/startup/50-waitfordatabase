@@ -3,9 +3,9 @@
 if [ "$FXPHP_BUILD" = "1" ]; then exit; fi
 
 
-echo "Waiting for MySQL Server..."
+echo "[STARTUP] Waiting for MySQL Server..."
 while ! mysqladmin ping -h"$MYSQL_HOST" --silent; do
-	echo "Waiting for MySQL Server..."
+	echo "[STARTUP] - Still waiting for MySQL Server..."
     sleep 3
 done
-echo "MySQL is up!"
+echo "[STARTUP] - MySQL is up!"

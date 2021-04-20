@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo "Loading crontab..."
+echo "[STARTUP] Importing crontab file $FILE_CRONTAB..."
 if [ -f "$FILE_CRONTAB" ]; then
     sed -i "s.\$APP_ROOT.$APP_ROOT.g" $FILE_CRONTAB
     crontab -u www-data $FILE_CRONTAB
     /etc/init.d/cron start
-    echo "Imported crontab file $FILE_CRONTAB for user www-data"
+    echo "[STARTUP] - Imported crontab file $FILE_CRONTAB for user www-data"
 else
-    echo "No crontab File found. Searched for $FILE_CRONTAB"
+    echo "[STARTUP] - Crontab file does not exist"
 fi

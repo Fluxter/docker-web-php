@@ -1,34 +1,27 @@
 #!/bin/bash
 set -e
 
-function buildTag
-{
-    echo "Builiding tag $1"
-    docker build ./prod --build-arg DOCKER_TAG=$1 -t fluxter/web-php:$1
-    if [ $? != 0 ]; then
-        echo Build resulted in an error
-    fi
+if [ -z ${1+x} ] || [ -z ${2+x} ]; then 
+    echo "Usage:: $0 [PHP Version] [push/build]"
+    exit 1
+fi
 
-    docker build ./dev --build-arg DOCKER_TAG=$1 -t fluxter/web-php:$1-dev
-    if [ $? != 0 ]; then
-        echo Build resulted in an error
-    fi
+VERSION=$1
+TAG=$1
+MODE=$2
 
-    if [ "$2" == "push" ]; then
-        docker push fluxter/web-php:$1
-        if [ $? != 0 ]; then
-            echo Push resulted in an error
-        fi
+if [ "${CI_COMMIT_BRANCH}" != "master" ]; then 
+    TAG=$TAG-beta
+fi
 
-        docker push fluxter/web-php:$1-dev
-        if [ $? != 0 ]; then
-            echo Push resulted in an error
-        fi
-    else
-        echo "Not pushing, run command with push like this: $0 push"
-    fi
-}
-
-buildTag 7.3 $1
-buildTag 7.4 $1
-buildTag 8.0 $1
+echo "Builiding version $VERSION with tag prefix $TAG and mode $MODE"
+if [ "$MODE" = "build" ]; then 
+    docker build ./prod --build-arg DOCKER_TAG=$VERSION -t fluxter/web-php:$TAG
+    docker build ./dev --build-arg DOCKER_TAG=$VERSION -t fluxter/web-php:$TAG-dev
+elif [ "$MODE" = "push" ]; then 
+    docker push fluxter/web-php:$TAG
+    docker push fluxter/web-php:$TAG-dev
+else
+    echo "Unknown mode $MODE. Available: push / build"
+    exit 1
+fi
