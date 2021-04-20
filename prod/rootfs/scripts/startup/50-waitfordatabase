@@ -1,9 +1,12 @@
 #!/bin/bash
 
-if [ "$FXPHP_BUILD" = "1" ]; then exit; fi
-
-
 echo "[STARTUP] Waiting for MySQL Server..."
+if [ "$FXPHP_BUILD" = "1" ]; then 
+    echo "[STARTUP] - Not waiting, FXPHP_BUILD = 1 (Builds dont have a database)"
+    exit
+fi
+
+
 while ! mysqladmin ping -h"$MYSQL_HOST" --silent; do
 	echo "[STARTUP] - Still waiting for MySQL Server..."
     sleep 3

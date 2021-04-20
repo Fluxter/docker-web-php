@@ -3,6 +3,7 @@
 echo "[STARTUP] Migrating the database..."
 if [ "$FXPHP_BUILD" = "1" ]; then 
     echo "[STARTUP] - Not migrating, FXPHP_BUILD = 1 (Builds dont have a database)"
+    exit
 fi
 
 echo "[STARTUP] - Running..."
