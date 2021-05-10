@@ -21,6 +21,7 @@ You can configure the container with the following environment variables
 | FILE_CRONTAB   | A crontab file that should be importet             | /crontab              |
 | SF_APP_ENV     | The symfony app env                                | /                     |
 | FXPHP_BUILD    | A file to indicate if the system builds. It wont wait for database then | / |
+| SYMFONY_CONSOLE | The filepath to the symfony console | /var/www/html/bin/console |
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.

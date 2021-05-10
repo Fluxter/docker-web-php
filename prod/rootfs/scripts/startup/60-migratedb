@@ -7,4 +7,4 @@ if [ "$FXPHP_BUILD" = "1" ]; then
 fi
 
 echo "[STARTUP] - Running..."
-sudo -u www-data $APP_ROOT/bin/console doctrine:migrations:migrate --no-interaction >> /dev/null
+sudo -u www-data $SYMFONY_CONSOLE doctrine:migrations:migrate --no-interaction >> /dev/null

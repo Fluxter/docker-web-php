@@ -2,6 +2,6 @@
 
 # Cache
 echo "[STARTUP] Clearing cache..."
-sudo -u www-data $APP_ROOT/bin/console cache:clear --no-warmup >> /dev/null
+sudo -u www-data $SYMFONY_CONSOLE cache:clear --no-warmup >> /dev/null
 echo "[STARTUP] Warming up cache..."
-sudo -u www-data $APP_ROOT/bin/console cache:warmup >> /dev/null
+sudo -u www-data $SYMFONY_CONSOLE cache:warmup >> /dev/null

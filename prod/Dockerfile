@@ -7,6 +7,7 @@ ARG         DOCKER_TAG
 
 ENV         APP_ROOT "/var/www/html"
 ENV         WEBSPACE_ROOT "/var/www/html/public"
+ENV         SYMFONY_CONSOLE "/var/www/html/bin/console"
 ENV         FILE_CRONTAB /crontab
 
 # APT Repositories and Dependencies
