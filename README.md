@@ -22,6 +22,8 @@ You can configure the container with the following environment variables
 | SF_APP_ENV     | The symfony app env                                | /                     |
 | FXPHP_BUILD    | A file to indicate if the system builds. It wont wait for database then | / |
 | SYMFONY_CONSOLE | The filepath to the symfony console | /var/www/html/bin/console |
+| FILE_PARAMETERS_DIST | The symfony parameters template file | /var/www/html/.env.local.dist |
+| FILE_PARAMETERS | The symfony parameters file | /var/www/html/.env.local |
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.
