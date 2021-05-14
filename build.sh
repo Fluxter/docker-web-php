@@ -21,6 +21,8 @@ if [ "$MODE" = "build" ]; then
 elif [ "$MODE" = "push" ]; then 
     docker push fluxter/web-php:$TAG
     docker push fluxter/web-php:$TAG-dev
+    docker image remove fluxter/web-php:$TAG
+    docker image remove fluxter/web-php:$TAG-dev
 else
     echo "Unknown mode $MODE. Available: push / build"
     exit 1
