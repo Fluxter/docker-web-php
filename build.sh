@@ -7,7 +7,7 @@ if [ -z ${1+x} ] || [ -z ${2+x} ]; then
 fi
 
 VERSION=$1
-TAG=$1
+TAG=$1-$CI_PIPELINE_IID
 MODE=$2
 
 if [ "${CI_COMMIT_BRANCH}" != "master" ]; then 
