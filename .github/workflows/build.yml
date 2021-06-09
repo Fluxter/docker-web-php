@@ -1,0 +1,17 @@
+name: Build PHP Docker images
+
+on:
+  push:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      - run: $GITHUB_WORKSPACE/build.sh 7.3 build
+      - run: $GITHUB_WORKSPACE/build.sh 7.4 build
+      - run: $GITHUB_WORKSPACE/build.sh 8.0 build
