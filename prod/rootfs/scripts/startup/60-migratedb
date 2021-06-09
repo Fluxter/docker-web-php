@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ "$FXPHP_BUILD" = "1" ]; then exit; fi
+echo "[STARTUP] Migrating the database..."
+if [ "$FXPHP_BUILD" = "1" ]; then 
+    echo "[STARTUP] - Not migrating, FXPHP_BUILD = 1 (Builds dont have a database)"
+    exit
+fi
 
-## Database Migrate
-echo "Migrating the database..."
-sudo -u www-data $APP_ROOT/bin/console doctrine:migrations:migrate --no-interaction
+echo "[STARTUP] - Running..."
+sudo -u www-data $SYMFONY_CONSOLE doctrine:migrations:migrate --no-interaction >> /dev/null

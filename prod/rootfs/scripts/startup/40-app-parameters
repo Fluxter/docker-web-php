@@ -1,14 +1,19 @@
 #!/bin/bash
 
 # Environment
-echo "[STARTUP] Environment File $FILE_PARAMETERS..."
+echo "[STARTUP] Preparing Environment..."
 if [ -f $FILE_PARAMETERS ]; then
+    echo "[STARTUP] - Removing existing environment File $FILE_PARAMETERS..."
     rm $FILE_PARAMETERS
 fi
 
+echo "[STARTUP] - Copying Environment File $FILE_PARAMETERS_DIST -> $FILE_PARAMETERS..."
 sudo -u www-data cp $FILE_PARAMETERS_DIST $FILE_PARAMETERS
-args=() i=0
+
 for var in $(compgen -e); do
+    echo "[STARTUP] - Setting Environment Value ${var}..."
     VALUE=`echo ${!var} | sed -r 's/\./\\\\./g'`
-    sudo -u www-data sed -i "s.\$${var}.${VALUE}.g" $FILE_PARAMETERS  > /dev/null
+    sudo -u www-data sed -i "s.\$${var}.${VALUE}.g" $FILE_PARAMETERS > /dev/null
 done
+
+echo "[STARTUP] - Environment File updated..."
