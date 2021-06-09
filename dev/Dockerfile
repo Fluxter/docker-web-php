@@ -20,6 +20,7 @@ RUN wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O /usr/bin/php-cs
 
 # Tools
 RUN sudo -u www-data composer global require fluxter/php-code-helper
+RUN sudo -u www-data composer global require fluxter/fxrelease
 # RUN echo 'PATH="$PATH:/home/www-data/.composer/vendor/bin"' >> /home/www-data/.bashrc
 RUN echo 'PATH="$PATH:/home/www-data/.config/composer/vendor/bin"' >> /home/www-data/.bashrc # Composer 2 puts it here ...
 
