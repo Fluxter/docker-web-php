@@ -6,6 +6,8 @@ if [ -z ${1+x} ] || [ -z ${2+x} ]; then
     exit 1
 fi
 
+CI_PIPELINE_IID=1
+
 VERSION=$1
 TAG=$1-$CI_PIPELINE_IID
 MODE=$2
