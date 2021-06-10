@@ -6,7 +6,7 @@ if [ -z ${1+x} ] || [ -z ${2+x} ]; then
     exit 1
 fi
 
-PIPELINE=$((1000 + $GITHUB_RUN_ID))
+PIPELINE=$((1000 + $GITHUB_RUN_NUMBER))
 
 VERSION=$1
 TAG=$1-$PIPELINE
