@@ -12,7 +12,7 @@ VERSION=$1
 TAG=$1-$PIPELINE
 MODE=$2
 
-if [ "${GITHUB_REF}" != "master" ]; then 
+if [ "${GITHUB_REF}" != "refs/heads/master" ]; then 
     TAG=$TAG-beta
 fi
 
