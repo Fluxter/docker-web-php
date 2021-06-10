@@ -6,10 +6,10 @@ if [ -z ${1+x} ] || [ -z ${2+x} ]; then
     exit 1
 fi
 
-CI_PIPELINE_IID=1
+PIPELINE=$((1000 + $GITHUB_RUN_NUMBER))
 
 VERSION=$1
-TAG=$1-$CI_PIPELINE_IID
+TAG=$1-$PIPELINE
 MODE=$2
 
 if [ "${CI_COMMIT_BRANCH}" != "master" ]; then 
