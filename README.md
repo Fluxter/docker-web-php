@@ -1,16 +1,37 @@
 # Fluxter PHP Container
 This container support Symfony with your desired PHP version
 
-# NOTE: For older versions
-If you are looking for older php version, checkout the other branches at https://github.com/Fluxter/docker-web-php/branches  
-Active Supported: 7.4, 7.3
+# Tag Naming
+The tags always represent the PHP Version, the Container Version and the build (or latest)
 
-## Environments
-### Prod
-`docker pull fluxter/web-php:<PHP Version>`
-### Dev
-`docker pull fluxter/web-php-dev:<PHP Version>`
+Updated means, that this tag will be updated automatically.
 
+If the Container Version changes, the old images wont be updated anymore
+
+# Versioning
+We make use of the semantic versioning (Major.Minor.Patch.Build). That means
+- If the Major Version changes, there can be breaking changes
+- If the Minor Version changes, there are new features available
+- If the Patch Version changes, there are fixes of the old version
+- If the Build Version changes, you wont notice any changes (except updated packages)
+
+# Tags
+## Current Tags
+### Production
+| PHP Version | Tag Name                                | OS           |
+| ----------- | --------------------------------------- | ------------ |
+| 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |
+| 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |
+| 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 |
+### Development 
+| PHP Version | Tag Name                                | OS           |
+| ----------- | --------------------------------------- | ------------ |
+| 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |
+| 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |
+| 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 |
+
+## Dont want to use latest?
+No problem, every build tag is also available with "b[Build-Number]" instead of "latest"
 
 ## Environment Variables
 You can configure the container with the following environment variables
