@@ -35,16 +35,16 @@ No problem, every build tag is also available with "b[Build-Number]" instead of 
 
 ## Environment Variables
 You can configure the container with the following environment variables
-| Variable name        | Description                                                             | Default value                 |
-| -------------------- | ----------------------------------------------------------------------- | ----------------------------- |
-| APP_ROOT             | The base app path, note this is mostly for symfony                      | /var/www/html                 |
-| WEBSPACE_ROOT        | The base url ($APP_ROOT/public is the entry point)                      | /var/www/html/public          |
-| FILE_CRONTAB         | A crontab file that should be importet                                  | /crontab                      |
-| SF_APP_ENV           | The symfony app env                                                     | /                             |
-| FXPHP_BUILD          | A file to indicate if the system builds. It wont wait for database then | /                             |
-| SYMFONY_CONSOLE      | The filepath to the symfony console                                     | /var/www/html/bin/console     |
-| FILE_PARAMETERS_DIST | The symfony parameters template file                                    | /var/www/html/.env.local.dist |
-| FILE_PARAMETERS      | The symfony parameters file                                             | /var/www/html/.env.local      |
+| Variable name        | Description                                                             | Default value         |
+| -------------------- | ----------------------------------------------------------------------- | --------------------- |
+| APP_ROOT             | The base app path, note this is mostly for symfony                      | /var/www/html         |
+| WEBSPACE_ROOT        | The base url ($APP_ROOT/public is the entry point)                      | $APP_ROOT/public      |
+| FILE_CRONTAB         | A crontab file that should be importet                                  | $APP_ROOT/crontab     |
+| SF_APP_ENV           | The symfony app env                                                     | /                     |
+| FXPHP_BUILD          | A file to indicate if the system builds. It wont wait for database then | /                     |
+| SYMFONY_CONSOLE      | The filepath to the symfony console                                     | $APP_ROOT/bin/console |
+| FILE_PARAMETERS      | The symfony parameters file                                             | $APP_ROOT/.env.local  |
+| FILE_PARAMETERS_DIST | The symfony parameters template file                                    | $FILE_PARAMETERS.dist |
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.
