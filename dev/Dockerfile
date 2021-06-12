@@ -1,5 +1,5 @@
-ARG DOCKER_TAG
-FROM fluxter/web-php:${DOCKER_TAG}
+ARG BASE_IMG
+FROM fluxter/web-php:${BASE_IMG}
 ARG DOCKER_TAG
 
 RUN apt update
