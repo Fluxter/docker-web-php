@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source /scripts/environment.sh
+
+echo $WEBSPACE_ROOT;
 sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app.conf
 sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app_ssl.conf
 
