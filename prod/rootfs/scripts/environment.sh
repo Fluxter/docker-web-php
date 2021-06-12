@@ -19,3 +19,5 @@ fi
 if [ -z ${FILE_PARAMETERS_DIST+x} ]; then
     export FILE_PARAMETERS_DIST="$FILE_PARAMETERS.dist"
 fi
+
+export SC=$SYMFONY_CONSOLE
