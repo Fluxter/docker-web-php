@@ -65,6 +65,7 @@ RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/supervisor/conf.d/php-
 RUN mkdir -p /var/www
 RUN usermod -d /home/www-data --shell /bin/bash www-data
 RUN chown -R www-data:www-data /var/www /home/www-data
+RUN echo source /scripts/environment.sh >> /etc/bash.bashrc
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/scripts/entrypoint.sh"]
