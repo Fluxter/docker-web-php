@@ -18,8 +18,8 @@ fi
 
 echo "Builiding version $VERSION with tag prefix $TAG and mode $MODE"
 if [ "$MODE" = "build" ]; then 
-    docker build ./prod --build-arg DOCKER_TAG=$VERSION -t fluxter/web-php:$TAG --no-cache
-    docker build ./dev --build-arg DOCKER_TAG=$VERSION --build-arg BASE_IMG=fluxter/web-php:$TAG -t fluxter/web-php:$TAG-dev --no-cache
+    docker build ./prod --build-arg PHP_VERSION=$VERSION -t fluxter/web-php:$TAG --no-cache
+    docker build ./dev --build-arg PHP_VERSION=$VERSION --build-arg BASE_IMG=fluxter/web-php:$TAG -t fluxter/web-php:$TAG-dev --no-cache
 elif [ "$MODE" = "push" ]; then 
     docker push fluxter/web-php:$TAG
     docker push fluxter/web-php:$TAG-dev

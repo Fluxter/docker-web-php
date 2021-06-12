@@ -3,7 +3,7 @@ FROM 		ubuntu:20.04
 MAINTAINER  Marcel Kallen, Fluxter <info@fluxter.net>
 ENV         DEBIAN_FRONTEND 		noninteractive
 ENV			LC_ALL 					C.UTF-8
-ARG         DOCKER_TAG
+ARG         PHP_VERSION
 
 ENV         APP_ROOT "/var/www/html"
 ENV         WEBSPACE_ROOT "/var/www/html/public"
@@ -27,9 +27,9 @@ RUN apt-get install -y nodejs
 RUN apt install -y yarn && yarn --version
 
 # PHP
-RUN if [ "$DOCKER_TAG" = "8.0" ]; then apt install -y php8.0-cli php8.0-common php8.0-opcache php8.0-mysql php8.0-mbstring php8.0-zip php8.0-fpm php8.0-tidy php8.0-curl php8.0-xml php8.0-intl; fi
-RUN if [ "$DOCKER_TAG" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl php7.4-bcmath php7.4-gd; fi
-RUN if [ "$DOCKER_TAG" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
+RUN if [ "$PHP_VERSION" = "8.0" ]; then apt install -y php8.0-cli php8.0-common php8.0-opcache php8.0-mysql php8.0-mbstring php8.0-zip php8.0-fpm php8.0-tidy php8.0-curl php8.0-xml php8.0-intl; fi
+RUN if [ "$PHP_VERSION" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl php7.4-bcmath php7.4-gd; fi
+RUN if [ "$PHP_VERSION" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/bin --filename=composer --2 \
     && php -r "unlink('composer-setup.php');"
@@ -53,18 +53,18 @@ RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5
 
 # FILES
 ADD	    rootfs /
-ADD  	config/php/php-fpm.conf /etc/php/${DOCKER_TAG}/fpm/php-fpm.conf
-ADD  	config/php/php.ini /etc/php/${DOCKER_TAG}/fpm/php.ini
-ADD  	config/php/php.ini /etc/php/${DOCKER_TAG}/cli/php.ini
+ADD  	config/php/php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
+ADD  	config/php/php.ini /etc/php/${PHP_VERSION}/fpm/php.ini
+ADD  	config/php/php.ini /etc/php/${PHP_VERSION}/cli/php.ini
 ADD  	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf
 RUN 	ln -s "/etc/nginx/sites-available/app.conf" "/etc/nginx/sites-enabled/app.conf"
 RUN 	ln -s "/etc/nginx/sites-available/app_ssl.conf" "/etc/nginx/sites-enabled/app_ssl.conf"
 RUN     chown -R www-data:www-data /home/www-data
 
 # Prepare scripts
-RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app.conf
-RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/nginx/sites-available/app_ssl.conf
-RUN     sed -i "s|PHP_VERSION_HERE|${DOCKER_TAG}|g" /etc/supervisor/conf.d/php-fpm.conf
+RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/app.conf
+RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/app_ssl.conf
+RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/supervisor/conf.d/php-fpm.conf
 
 # ENVIRONMENT
 RUN mkdir -p /var/www

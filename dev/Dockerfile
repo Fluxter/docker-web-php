@@ -1,6 +1,6 @@
 ARG BASE_IMG
 FROM fluxter/web-php:${BASE_IMG}
-ARG DOCKER_TAG
+ARG PHP_VERSION
 
 RUN apt update
 
@@ -25,7 +25,7 @@ RUN sudo -u www-data composer global require fluxter/fxrelease
 RUN echo 'PATH="$PATH:/home/www-data/.config/composer/vendor/bin"' >> /home/www-data/.bashrc # Composer 2 puts it here ...
 
 # XDEBUG
-RUN apt install -y php${DOCKER_TAG}-xdebug 
-ADD	config/php/21-xdebug.ini /etc/php/$DOCKER_TAG/fpm/conf.d/21-xdebug.ini
-ADD	config/php/21-xdebug.ini /etc/php/$DOCKER_TAG/cli/conf.d/21-xdebug.ini
+RUN apt install -y php${PHP_VERSION}-xdebug 
+ADD	config/php/21-xdebug.ini /etc/php/$PHP_VERSION/fpm/conf.d/21-xdebug.ini
+ADD	config/php/21-xdebug.ini /etc/php/$PHP_VERSION/cli/conf.d/21-xdebug.ini
 ADD	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf
