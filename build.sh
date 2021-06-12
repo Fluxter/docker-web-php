@@ -17,10 +17,10 @@ if [ "${GITHUB_REF}" != "refs/heads/master" ]; then
 fi
 
 echo "Builiding version $VERSION with tag prefix $TAG and mode $MODE"
-if [ "$MODE" = "build" ]; then 
-    docker build ./prod --build-arg PHP_VERSION=$VERSION -t fluxter/web-php:$TAG --no-cache
+if [ "$MODE" = "build" ]; then
+    docker build ./prod --build-arg PHP_VERSION=$VERSION -t fluxter/web-php:$TAG
     docker build ./dev --build-arg PHP_VERSION=$VERSION --build-arg BASE_IMG=fluxter/web-php:$TAG -t fluxter/web-php:$TAG-dev --no-cache
-elif [ "$MODE" = "push" ]; then 
+elif [ "$MODE" = "push" ]; then
     docker push fluxter/web-php:$TAG
     docker push fluxter/web-php:$TAG-dev
     docker image remove fluxter/web-php:$TAG

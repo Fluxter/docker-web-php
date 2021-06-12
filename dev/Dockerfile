@@ -1,5 +1,5 @@
 ARG BASE_IMG
-FROM fluxter/web-php:${BASE_IMG}
+FROM $BASE_IMG
 ARG PHP_VERSION
 
 RUN apt update
