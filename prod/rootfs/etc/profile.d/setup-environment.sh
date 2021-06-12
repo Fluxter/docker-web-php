@@ -1,0 +1,2 @@
+
+source /scripts/environment.sh
