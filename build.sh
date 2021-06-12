@@ -40,8 +40,8 @@ elif [ "$MODE" = "push" ]; then
         docker push fluxter/web-php:$TAG-dev-latest
     fi
 
-    $BUILD_CMD_PROD fluxter/web-php:$TAG-prod-b${BUILD}
-    $BUILD_CMD_DEV fluxter/web-php:$TAG-dev-b${BUILD}
+    docker push fluxter/web-php:$TAG-prod-b${BUILD}
+    docker push fluxter/web-php:$TAG-dev-b${BUILD}
 else
     echo "Unknown mode $MODE. Available: push / build"
     exit 1
