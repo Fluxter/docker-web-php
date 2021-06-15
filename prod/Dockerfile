@@ -42,7 +42,9 @@ RUN apt-get install -y nodejs
 RUN npm install -g create-ts-index
 	
 # Openapi Codegen
-RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.1.1/openapi-generator-cli-5.1.1.jar -O /opt/openapi-generator.jar \
+# Version 5.0.0-beta3 is the latest version
+# See following issue https://github.com/OpenAPITools/openapi-generator/issues/9146
+RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0-beta3/openapi-generator-cli-5.0.0-beta3.jar -O /opt/openapi-generator.jar \
 	&& echo '#!/bin/bash\njava -jar /opt/openapi-generator.jar $@' > /usr/bin/openapi-generator \
 	&& chmod +x /usr/bin/openapi-generator
 
