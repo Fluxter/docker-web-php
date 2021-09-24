@@ -29,8 +29,8 @@ if [ "$MODE" = "build" ]; then
         $BUILD_CMD_PROD -t fluxter/web-php:$TAG-prod-latest -t fluxter/web-php:$TAG-prod-b${BUILD}
         $BUILD_CMD_DEV -t fluxter/web-php:$TAG-dev-latest -t fluxter/web-php:$TAG-dev-b${BUILD}
     else
-        $BUILD_CMD_PROD -t fluxter/web-php:$TAG-prod-b${BUILD}
-        $BUILD_CMD_DEV -t fluxter/web-php:$TAG-dev-b${BUILD}
+        $BUILD_CMD_PROD -t fluxter/web-php:$TAG-prod-b${BUILD}-beta
+        $BUILD_CMD_DEV -t fluxter/web-php:$TAG-dev-b${BUILD}-beta
     fi
 elif [ "$MODE" = "push" ]; then
     echo "Pushing version $PHP_VERSION with tag prefix $TAG and mode $MODE"
@@ -38,10 +38,13 @@ elif [ "$MODE" = "push" ]; then
     if [ "${GITHUB_REF}" = "refs/heads/master" ]; then 
         docker push fluxter/web-php:$TAG-prod-latest
         docker push fluxter/web-php:$TAG-dev-latest
+        docker push fluxter/web-php:$TAG-prod-b${BUILD}
+        docker push fluxter/web-php:$TAG-dev-b${BUILD}
+    else
+        docker push fluxter/web-php:$TAG-prod-b${BUILD}-beta
+        docker push fluxter/web-php:$TAG-dev-b${BUILD}-beta
     fi
 
-    docker push fluxter/web-php:$TAG-prod-b${BUILD}
-    docker push fluxter/web-php:$TAG-dev-b${BUILD}
 else
     echo "Unknown mode $MODE. Available: push / build"
     exit 1
