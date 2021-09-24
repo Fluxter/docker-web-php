@@ -6,6 +6,7 @@ ENV			LC_ALL 					C.UTF-8
 ARG         PHP_VERSION
 
 ENV         APP_ROOT "/var/www/html"
+ENV         FILE_UPLOAD_LIMIT "2M"
 
 # APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
@@ -62,6 +63,7 @@ RUN     chown -R www-data:www-data /home/www-data
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/app.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/app_ssl.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/supervisor/conf.d/php-fpm.conf
+RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/environment.sh
 
 # ENVIRONMENT
 RUN mkdir -p /var/www

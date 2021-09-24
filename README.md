@@ -24,11 +24,11 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 | 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |
 | 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 |
 ### Development 
-| PHP Version | Tag Name                                | OS           |
-| ----------- | --------------------------------------- | ------------ |
-| 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |
-| 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |
-| 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 |
+| PHP Version | Tag Name                               | OS           |
+| ----------- | -------------------------------------- | ------------ |
+| 8.0         | fluxter/web-php:v1.0-php8.0-dev-latest | Ubuntu 20.04 |
+| 7.4         | fluxter/web-php:v1.0-php7.4-dev-latest | Ubuntu 20.04 |
+| 7.3         | fluxter/web-php:v1.0-php7.3-dev-latest | Ubuntu 20.04 |
 
 ## Dont want to use latest?
 No problem, every build tag is also available with "b[Build-Number]" instead of "latest"
@@ -45,6 +45,7 @@ You can configure the container with the following environment variables
 | SYMFONY_CONSOLE      | The filepath to the symfony console                                     | $APP_ROOT/bin/console |
 | FILE_PARAMETERS      | The symfony parameters file                                             | $APP_ROOT/.env.local  |
 | FILE_PARAMETERS_DIST | The symfony parameters template file                                    | $FILE_PARAMETERS.dist |
+| FILE_UPLOAD_LIMIT    | The file upload limit for nginx and php                                 | 2M                    |
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.

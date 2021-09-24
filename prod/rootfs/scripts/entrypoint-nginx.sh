@@ -2,10 +2,6 @@
 
 source /scripts/environment.sh
 
-echo $WEBSPACE_ROOT;
-sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app.conf
-sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app_ssl.conf
-
 FILE_SSL_KEY=/home/www-data/ssl/nginx-app.key
 FILE_SSL_CRT=/home/www-data/ssl/nginx-app.crt
 if [ ! -f "$FILE_SSL_KEY" ]; then

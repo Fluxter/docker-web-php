@@ -21,3 +21,4 @@ if [ -z ${FILE_PARAMETERS_DIST+x} ]; then
 fi
 
 export SC=$SYMFONY_CONSOLE
+export PHP_VERSION=PHP_VERSION_HERE

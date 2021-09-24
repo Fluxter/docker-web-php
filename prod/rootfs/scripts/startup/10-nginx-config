@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /scripts/environment.sh
+
+sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app.conf
+sed -i "/ root/c\root $WEBSPACE_ROOT;" /etc/nginx/sites-available/app_ssl.conf
+sed -i "/ client_max_body_size/c\client_max_body_size $FILE_UPLOAD_LIMIT;" /etc/nginx/nginx.conf

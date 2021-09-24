@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source /scripts/environment.sh
+
+echo "upload_max_filesize = $FILE_UPLOAD_LIMIT" >> /etc/php/$PHP_VERSION/fpm/conf.d/90-file-upload-limit.ini
+echo "post_max_size = $FILE_UPLOAD_LIMIT" >> /etc/php/$PHP_VERSION/fpm/conf.d/90-file-upload-limit.ini
