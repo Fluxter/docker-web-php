@@ -10,7 +10,7 @@ ENV         FILE_UPLOAD_LIMIT "2M"
 
 # APT Repositories and Dependencies
 RUN apt update && apt upgrade -y
-RUN apt install -y unzip mysql-client curl git software-properties-common wget sudo software-properties-common rsync supervisor default-jre cron nano
+RUN apt install -y unzip mysql-client curl git software-properties-common wget sudo software-properties-common rsync supervisor default-jre cron nano iputils-ping
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN add-apt-repository ppa:ondrej/php && apt update
