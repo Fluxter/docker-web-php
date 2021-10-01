@@ -65,6 +65,9 @@ RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/supervisor/conf.d/php-fpm.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /scripts/environment.sh
 
+# Prepare Folders
+RUN     mkdir /var/lib/php/sessions && chown -R www-data:www-data /var/lib/php/sessions
+
 # ENVIRONMENT
 RUN mkdir -p /var/www
 RUN usermod -d /home/www-data --shell /bin/bash www-data
