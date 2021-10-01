@@ -28,7 +28,9 @@ RUN if [ "$PHP_VERSION" = "7.4" ]; then apt install -y php7.4-cli php7.4-common 
 RUN if [ "$PHP_VERSION" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/bin --filename=composer --2 \
-    && php -r "unlink('composer-setup.php');"
+    && php -r "unlink('composer-setup.php');"s
+RUN mkdir /var/lib/php/sessions && chown -R www-data:www-data /var/lib/php/sessions
+
 
 # NGINX
 RUN 	apt install -y nginx
@@ -64,9 +66,6 @@ RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/nginx/sites-available/app_ssl.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /etc/supervisor/conf.d/php-fpm.conf
 RUN     sed -i "s|PHP_VERSION_HERE|${PHP_VERSION}|g" /scripts/environment.sh
-
-# Prepare Folders
-RUN     mkdir /var/lib/php/sessions && chown -R www-data:www-data /var/lib/php/sessions
 
 # ENVIRONMENT
 RUN mkdir -p /var/www
