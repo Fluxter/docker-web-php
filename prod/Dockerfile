@@ -29,7 +29,7 @@ RUN if [ "$PHP_VERSION" = "7.3" ]; then apt install -y php7.3-cli php7.3-common 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/bin --filename=composer --2 \
     && php -r "unlink('composer-setup.php');"
-RUN mkdir /var/lib/php/sessions && chown -R www-data:www-data /var/lib/php/sessions
+RUN chown -R www-data:www-data /var/lib/php/sessions
 
 
 # NGINX
