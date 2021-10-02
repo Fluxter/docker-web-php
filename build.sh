@@ -23,8 +23,13 @@ if [ "$MODE" = "build" ]; then
     echo "----"
     echo "Builiding version $PHP_VERSION with tag prefix $TAG and mode $MODE"
     echo "----"
+    if [ "${GITHUB_REF}" = "refs/heads/master" ]; then 
+        BASE_IMG=fluxter/web-php:$TAG-prod-b${BUILD}
+    else
+        BASE_IMG=fluxter/web-php:$TAG-prod-b${BUILD}-beta
+    fi
     BUILD_CMD_PROD="docker build ./prod --build-arg PHP_VERSION=$PHP_VERSION --no-cache"
-    BUILD_CMD_DEV="docker build ./dev --build-arg PHP_VERSION=$PHP_VERSION --build-arg BASE_IMG=fluxter/web-php:$TAG-prod-b${BUILD} --no-cache"
+    BUILD_CMD_DEV="docker build ./dev --build-arg PHP_VERSION=$PHP_VERSION --build-arg BASE_IMG=$BASE_IMG --no-cache"
     if [ "${GITHUB_REF}" = "refs/heads/master" ]; then 
         $BUILD_CMD_PROD -t fluxter/web-php:$TAG-prod-latest -t fluxter/web-php:$TAG-prod-b${BUILD}
         $BUILD_CMD_DEV -t fluxter/web-php:$TAG-dev-latest -t fluxter/web-php:$TAG-dev-b${BUILD}
