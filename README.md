@@ -18,17 +18,19 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 # Tags
 ## Current Tags
 ### Production
-| PHP Version | Tag Name                                | OS           |
-| ----------- | --------------------------------------- | ------------ |
-| 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |
-| 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |
-| 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 |
+| PHP Version | Tag Name                                | OS           | Info                        |
+| ----------- | --------------------------------------- | ------------ | --------------------------- |
+| 8.1         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
+| 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
+| 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |                             |
+| 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 | Deprecated since 01.01.2022 |
 ### Development 
-| PHP Version | Tag Name                               | OS           |
-| ----------- | -------------------------------------- | ------------ |
-| 8.0         | fluxter/web-php:v1.0-php8.0-dev-latest | Ubuntu 20.04 |
-| 7.4         | fluxter/web-php:v1.0-php7.4-dev-latest | Ubuntu 20.04 |
-| 7.3         | fluxter/web-php:v1.0-php7.3-dev-latest | Ubuntu 20.04 |
+| PHP Version | Tag Name                               | OS           | Info                        |
+| ----------- | -------------------------------------- | ------------ | --------------------------- |
+| 8.1         | fluxter/web-php:v1.0-php8.1-dev-latest | Ubuntu 20.04 |                             |
+| 8.0         | fluxter/web-php:v1.0-php8.0-dev-latest | Ubuntu 20.04 |                             |
+| 7.4         | fluxter/web-php:v1.0-php7.4-dev-latest | Ubuntu 20.04 |                             |
+| 7.3         | fluxter/web-php:v1.0-php7.3-dev-latest | Ubuntu 20.04 | Deprecated since 01.01.2022 |
 
 ## Dont want to use latest?
 No problem, every build tag is also available with "b[Build-Number]" instead of "latest"
@@ -89,7 +91,7 @@ Check out the examples directory for example configurations ;)
           - ./data/mysql:/var/lib/mysql
           
       web:
-        image: fluxter/symfony-web-dev
+        image: fluxter/symfony-web-dev:v1.0-php8.0-dev-latest
         env_file: ../.env
         volumes:
           - ./app:/app

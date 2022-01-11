@@ -1,32 +1,55 @@
 name: Build PHP Docker images
 
 on:
-  push:
-    branches: [ develop, master ]
-  workflow_dispatch:
+    push:
+        branches: [develop, master]
 
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
+    build-and-push-74:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Build PHP 7.4
+              run: $GITHUB_WORKSPACE/build.sh 7.4 build
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+            - name: Push PHP 7.4
+              run: $GITHUB_WORKSPACE/build.sh 7.4 push
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build PHP 7.3
-        run: $GITHUB_WORKSPACE/build.sh 7.3 build
-      - name: Build PHP 7.4
-        run: $GITHUB_WORKSPACE/build.sh 7.4 build
-      - name: Build PHP 8.0
-        run: $GITHUB_WORKSPACE/build.sh 8.0 build
-      - name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Push PHP 7.3
-        run: $GITHUB_WORKSPACE/build.sh 7.3 push
-      - name: Push PHP 7.4
-        run: $GITHUB_WORKSPACE/build.sh 7.4 push
-      - name: Push PHP 8.0
-        run: $GITHUB_WORKSPACE/build.sh 8.0 push
+    build-and-push-80:
+        runs-on: ubuntu-latest
+
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Build PHP 8.0
+              run: $GITHUB_WORKSPACE/build.sh 8.0 build
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+            - name: Push PHP 8.0
+              run: $GITHUB_WORKSPACE/build.sh 8.0 push
+
+    build-and-push-81:
+        runs-on: ubuntu-latest
+
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Build PHP 8.1
+              run: $GITHUB_WORKSPACE/build.sh 8.1 build
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+            - name: Push PHP 8.1
+              run: $GITHUB_WORKSPACE/build.sh 8.1 push
