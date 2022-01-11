@@ -5,7 +5,7 @@ on:
         branches: [develop, master]
 
 jobs:
-    build-and-push-7.4:
+    build-and-push-74:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -20,7 +20,7 @@ jobs:
             - name: Push PHP 7.4
               run: $GITHUB_WORKSPACE/build.sh 7.4 push
 
-    build-and-push-8.0:
+    build-and-push-80:
         runs-on: ubuntu-latest
 
         # Steps represent a sequence of tasks that will be executed as part of the job
@@ -37,7 +37,7 @@ jobs:
             - name: Push PHP 8.0
               run: $GITHUB_WORKSPACE/build.sh 8.0 push
 
-    build-and-push-8.1:
+    build-and-push-81:
         runs-on: ubuntu-latest
 
         # Steps represent a sequence of tasks that will be executed as part of the job
