@@ -23,9 +23,9 @@ RUN apt-get install -y nodejs
 RUN apt install -y yarn && yarn --version
 
 # PHP
+RUN if [ "$PHP_VERSION" = "8.1" ]; then apt install -y php8.1-cli php8.1-common php8.1-opcache php8.1-mysql php8.1-mbstring php8.1-zip php8.1-fpm php8.1-tidy php8.1-curl php8.1-xml php8.1-intl php8.1-gd; fi
 RUN if [ "$PHP_VERSION" = "8.0" ]; then apt install -y php8.0-cli php8.0-common php8.0-opcache php8.0-mysql php8.0-mbstring php8.0-zip php8.0-fpm php8.0-tidy php8.0-curl php8.0-xml php8.0-intl php8.0-gd; fi
-RUN if [ "$PHP_VERSION" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4-xml php7.4-xmlrpc php7.4-intl php7.4-bcmath php7.4-gd; fi
-RUN if [ "$PHP_VERSION" = "7.3" ]; then apt install -y php7.3-cli php7.3-common php7.3-json php7.3-opcache php7.3-mysql php7.3-mbstring php7.3-zip php7.3-fpm php7.3-tidy php7.3-curl php7.3-xml; fi
+RUN if [ "$PHP_VERSION" = "7.4" ]; then apt install -y php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-mysql php7.4-mbstring php7.4-zip php7.4-fpm php7.4-tidy php7.4-curl php7.4.-xml php7.4-xmlrpc php7.4-intl php7.4-bcmath php7.4-gd; fi
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/bin --filename=composer --2 \
     && php -r "unlink('composer-setup.php');"
