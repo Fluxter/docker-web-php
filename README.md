@@ -20,7 +20,7 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 ### Production
 | PHP Version | Tag Name                                | OS           | Info                        |
 | ----------- | --------------------------------------- | ------------ | --------------------------- |
-| 8.1         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
+| 8.1         | fluxter/web-php:v1.0-php8.1-prod-latest | Ubuntu 20.04 |                             |
 | 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
 | 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |                             |
 | 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 | Deprecated since 01.01.2022 |
