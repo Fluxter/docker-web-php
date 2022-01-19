@@ -2,7 +2,7 @@ name: Build PHP Docker images
 
 on:
     push:
-        branches: [develop, master]
+        branches: [stage, master]
 
 jobs:
     build-and-push-74:

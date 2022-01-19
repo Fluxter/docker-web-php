@@ -15,7 +15,7 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 - If the Patch Version changes, there are fixes of the old version
 - If the Build Version changes, you wont notice any changes (except updated packages)
 
-# Tags
+# About the Container
 ## Current Tags
 ### Production
 | PHP Version | Tag Name                                | OS           | Info                        |
@@ -31,10 +31,20 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 | 8.0         | fluxter/web-php:v1.0-php8.0-dev-latest | Ubuntu 20.04 |                             |
 | 7.4         | fluxter/web-php:v1.0-php7.4-dev-latest | Ubuntu 20.04 |                             |
 | 7.3         | fluxter/web-php:v1.0-php7.3-dev-latest | Ubuntu 20.04 | Deprecated since 01.01.2022 |
-
-## Dont want to use latest?
+### Dont want to use latest?
 No problem, every build tag is also available with "b[Build-Number]" instead of "latest"
 
+## Installed software
+| Software          | Version     | Note                                                                                                     |
+| ----------------- | ----------- | -------------------------------------------------------------------------------------------------------- |
+| nginx             | latest      | /                                                                                                        |
+| Node              | 16.x        | Latest LTS                                                                                               |
+| - create-ts-index | latest      | Creates index.ts files                                                                                   |
+| - yarn            | latest      | /                                                                                                        |
+| openapi-generator | 5.0.0-beta3 | [Latest version, newer ones break things](https://github.com/OpenAPITools/openapi-generator/issues/9146) |
+| mysql-client      | latest      | /                                                                                                        |
+| make              | latest      | e.g. used for node-sass                                                                                  |
+| g++               | latest      | e.g. used for several compile things                                                                     |
 ## Environment Variables
 You can configure the container with the following environment variables
 | Variable name        | Description                                                             | Default value         |
@@ -48,6 +58,7 @@ You can configure the container with the following environment variables
 | FILE_PARAMETERS      | The symfony parameters file                                             | $APP_ROOT/.env.local  |
 | FILE_PARAMETERS_DIST | The symfony parameters template file                                    | $FILE_PARAMETERS.dist |
 | FILE_UPLOAD_LIMIT    | The file upload limit for nginx and php                                 | 2M                    |
+
 
 ## How to handle own environment variables in Symfony?
 Symfony now uses the Environment component.
