@@ -2,7 +2,7 @@
 
 ## Composer
 echo "[STARTUP] Installing composer packages..."
-if [ "$SF_APP_ENV" == "dev" ]; then
+if [ "$SF_APP_ENV" == "dev" ] || [ "$APP_ENV" == "dev" ]; then
     sudo -u www-data composer install -d $APP_ROOT >> /dev/null
 else
     sudo -u www-data composer install --no-dev -o -d $APP_ROOT >> /dev/null

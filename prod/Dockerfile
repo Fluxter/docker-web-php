@@ -16,8 +16,9 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN add-apt-repository ppa:ondrej/php && apt update
 
 # NODE
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g create-ts-index
 
 # Yarn
 RUN apt install -y yarn && yarn --version
@@ -38,11 +39,6 @@ RUN     rm -f /etc/nginx/sites-enabled/*
 RUN     mkdir -p /home/www-data/ssl
 RUN     chmod -R 777 /var/log/nginx
 EXPOSE  80:80
-
-# NODE
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g create-ts-index
 	
 # Openapi Codegen
 # Version 5.0.0-beta3 is the latest version

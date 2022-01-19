@@ -20,7 +20,7 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 ### Production
 | PHP Version | Tag Name                                | OS           | Info                        |
 | ----------- | --------------------------------------- | ------------ | --------------------------- |
-| 8.1         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
+| 8.1         | fluxter/web-php:v1.0-php8.1-prod-latest | Ubuntu 20.04 |                             |
 | 8.0         | fluxter/web-php:v1.0-php8.0-prod-latest | Ubuntu 20.04 |                             |
 | 7.4         | fluxter/web-php:v1.0-php7.4-prod-latest | Ubuntu 20.04 |                             |
 | 7.3         | fluxter/web-php:v1.0-php7.3-prod-latest | Ubuntu 20.04 | Deprecated since 01.01.2022 |
@@ -42,7 +42,7 @@ You can configure the container with the following environment variables
 | APP_ROOT             | The base app path, note this is mostly for symfony                      | /var/www/html         |
 | WEBSPACE_ROOT        | The base url ($APP_ROOT/public is the entry point)                      | $APP_ROOT/public      |
 | FILE_CRONTAB         | A crontab file that should be importet                                  | $APP_ROOT/crontab     |
-| SF_APP_ENV           | The symfony app env                                                     | /                     |
+| APP_ENV              | The symfony app env                                                     | /                     |
 | FXPHP_BUILD          | A file to indicate if the system builds. It wont wait for database then | /                     |
 | SYMFONY_CONSOLE      | The filepath to the symfony console                                     | $APP_ROOT/bin/console |
 | FILE_PARAMETERS      | The symfony parameters file                                             | $APP_ROOT/.env.local  |
@@ -57,12 +57,12 @@ Symfony now uses the Environment component.
 ### Example:
 .env.local.dist
 ```
-APP_ENV=$SF_APP_ENV
+APP_ENV=$APP_ENV
 TESTVAR=$TESTVAR
 ```
 Docker .env file (or environment Variables)
 ``` 
-SF_APP_ENV=test
+APP_ENV=test
 ```
 The resulting .env file
 ```
