@@ -26,3 +26,7 @@ RUN apt install -y php${PHP_VERSION}-xdebug
 ADD	config/php/21-xdebug.ini /etc/php/$PHP_VERSION/fpm/conf.d/21-xdebug.ini
 ADD	config/php/21-xdebug.ini /etc/php/$PHP_VERSION/cli/conf.d/21-xdebug.ini
 ADD	config/nginx/cache.conf /etc/nginx/conf.d/cache.conf
+
+# PHPUNIT
+RUN wget -O /usr/bin/phpunit https://phar.phpunit.de/phpunit-9.phar
+RUN chmod +x /usr/bin/phpunit
