@@ -43,7 +43,10 @@ EXPOSE  80:80
 # Openapi Codegen
 # Version 5.0.0-beta3 is the latest version
 # See following issue https://github.com/OpenAPITools/openapi-generator/issues/9146
-RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0-beta3/openapi-generator-cli-5.0.0-beta3.jar -O /opt/openapi-generator.jar \
+RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0-beta3/openapi-generator-cli-5.0.0-beta3.jar -O /opt/openapi-generator-5.0.0-beta3.jar \
+	&& echo '#!/bin/bash\njava -jar /opt/openapi-generator-5.0.0-beta3.jar $@' > /usr/bin/openapi-generator-5.0.0-beta3 \
+	&& chmod +x /usr/bin/openapi-generator-5.0.0-beta3
+RUN wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.4.0/openapi-generator-cli-5.4.0.jar -O /opt/openapi-generator.jar \
 	&& echo '#!/bin/bash\njava -jar /opt/openapi-generator.jar $@' > /usr/bin/openapi-generator \
 	&& chmod +x /usr/bin/openapi-generator
 
