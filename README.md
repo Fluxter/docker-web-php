@@ -35,16 +35,16 @@ We make use of the semantic versioning (Major.Minor.Patch.Build). That means
 No problem, every build tag is also available with "b[Build-Number]" instead of "latest"
 
 ## Installed software
-| Software          | Version     | Note                                                                                                     |
-| ----------------- | ----------- | -------------------------------------------------------------------------------------------------------- |
-| nginx             | latest      | /                                                                                                        |
-| Node              | 16.x        | Latest LTS                                                                                               |
-| - create-ts-index | latest      | Creates index.ts files                                                                                   |
-| - yarn            | latest      | /                                                                                                        |
-| openapi-generator | 5.0.0-beta3 | [Latest version, newer ones break things](https://github.com/OpenAPITools/openapi-generator/issues/9146) |
-| mysql-client      | latest      | /                                                                                                        |
-| make              | latest      | e.g. used for node-sass                                                                                  |
-| g++               | latest      | e.g. used for several compile things                                                                     |
+| Software          | Version | Note                                 |
+| ----------------- | ------- | ------------------------------------ |
+| nginx             | latest  | /                                    |
+| Node              | 16.x    | Latest LTS                           |
+| - create-ts-index | latest  | Creates index.ts files               |
+| - yarn            | latest  | /                                    |
+| openapi-generator | 5.4.0   |                                      |
+| mysql-client      | latest  | /                                    |
+| make              | latest  | e.g. used for node-sass              |
+| g++               | latest  | e.g. used for several compile things |
 ## Environment Variables
 You can configure the container with the following environment variables
 | Variable name        | Description                                                             | Default value         |
